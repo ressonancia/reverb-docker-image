@@ -1,4 +1,4 @@
-![](https://github.com/ressonance/reverb-image/blob/main/assets/reverb-cover.png?raw=true)
+![](https://github.com/ressonancia/reverb-docker-image/blob/main/assets/reverb-cover.png?raw=true)
 
 ## Laravel Reverb
 
@@ -42,6 +42,9 @@ services:
     ports:
       - "8080:8080"
 ```
+
+**The values for key and secred use here are only examples and should not be used in your deployment**
+
 ## Environment Variables
 
 | Variable            | Default Value                          | Description                                  |
