@@ -57,3 +57,18 @@ services:
 | REVERB_SCHEME       | http                                   | Scheme (protocol) used by the Reverb API     |
 | REVERB_SERVER_HOST  | 0.0.0.0                                | Server host binding for the application      |
 | REVERB_SERVER_PORT  | 8080                                   | Server port for the application to listen on |
+
+## Running multiple applications at the same reverb container
+
+Reverb allows us to run multiple applications at the same server. To do this using the the container we should override the reverb configuration.
+
+If we look at [this file](https://github.com/laravel/reverb/blob/main/config/reverb.php) there will by a `apps` array we should duplicate changing the configurations.
+
+After changing the file override when the container 
+
+```sh
+docker run -d \
+  -p 8080:8080 \
+  -v ./reverb.php:/var/www/app/config/reverb.php \
+  ressonance/reverb:latest
+```
