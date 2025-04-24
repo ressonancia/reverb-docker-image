@@ -19,7 +19,7 @@ docker run -d \
   -e REVERB_SERVER_HOST=0.0.0.0 \
   -e REVERB_SERVER_PORT=8080 \
   -p 8080:8080 \
-  ressonance/reverb:latest
+  ghcr.io/ressonancia/reverb:latest
 ```
 
 With docker-compose
@@ -29,7 +29,8 @@ version: '3.8'
 
 services:
   reverb_app:
-    image: ressonance/reverb:latest
+    image: ghcr.io/ressonancia/reverb:latest
+    stop_signal: SIGINT
     environment:
       - REVERB_APP_ID=579546
       - REVERB_APP_KEY=xswea5wathikqooztfux
@@ -43,7 +44,9 @@ services:
       - "8080:8080"
 ```
 
-**The values for key and secred use here are only examples and should not be used in your deployment**
+**The values for key and secred use here are only examples and should not be used in your deployment.**
+
+**Take a look at the stop_signal directive. This is important to ensure gracefull shutdown. Reverb wats for SIGINT and not SIGTERM**
 
 ## Environment Variables
 
@@ -70,5 +73,5 @@ After changing the file override when the container
 docker run -d \
   -p 8080:8080 \
   -v ./reverb.php:/var/www/app/config/reverb.php \
-  ressonance/reverb:latest
+  ghcr.io/ressonancia/reverb:latest
 ```
